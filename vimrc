@@ -1,14 +1,4 @@
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
+"Plugins install
 call plug#begin()
 Plug '~/my-prototype-plugin'
 Plug 'preservim/nerdtree'
@@ -20,20 +10,63 @@ Plug 'vim-airline/vim-airline'
 Plug 'sbdchd/neoformat'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'easymotion/vim-easymotion'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'rust-lang/rust.vim'
+Plug 'pangloss/vim-javascript'    
+Plug 'leafgarland/typescript-vim' 
+Plug 'maxmellon/vim-jsx-pretty'   
+Plug 'jparise/vim-graphql'    
+Plug 'catppuccin/vim', { 'as': 'catppuccin_mocha' }
 call plug#end()
 
+"Misc
 set number
-
 packadd! dracula
 syntax enable
-colorscheme dracula
+colorscheme catppuccin_mocha
+let mapleader=" "
+autocmd BufWritePre *.js Neoformat
+hi Normal ctermbg=none
+set mouse=a
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[3 q"
+let &t_EI = "\<Esc>[2 q"
 
+"Better copy and past
+set clipboard+=unnamedplus
+let g:clipboard = {
+          \   'name': 'win32yank-wsl',
+          \   'copy': {
+          \      '+': 'win32yank.exe -i --crlf',
+          \      '*': 'win32yank.exe -i --crlf',
+          \    },
+          \   'paste': {
+          \      '+': 'win32yank.exe -o --lf',
+          \      '*': 'win32yank.exe -o --lf',
+          \   },
+          \   'cache_enabled': 0,
+          \ }
+
+"NerdTree
 autocmd VimEnter * NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <F7> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-autocmd BufWritePre *.js Neoformat
+" easymotion
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-hi Normal ctermbg=none
+" Shortcuts
+nnoremap <Leader>o :Files<CR> 
+nnoremap <Leader>w :w<CR>
+nnoremap <leader>r :PlugInstal<CR>
+nnoremap <leader>p :Prettier<CR>
