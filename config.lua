@@ -6,14 +6,20 @@ lvim.plugins = {
     end
   },
   "wiliamks/nice-reference.nvim",
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
 }
 
 
 lvim.keys.normal_mode["<Leader>i"] = ":HopChar2<CR>"
 lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').references()<CR>"
 
---local linters = require "lvim.lsp.null-ls.linters"
---linters.setup {
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
 --   { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
 -- }
 
@@ -24,3 +30,8 @@ formatters.setup {
     filetypes = { "typescript", "typescriptreact" },
   },
 }
+
+-- lvim.builtin.telescope.defaults.file_ignore_patterns = {
+--   "node_modules/",
+--   "node_modules/*",
+-
