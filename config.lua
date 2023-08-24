@@ -14,24 +14,35 @@ lvim.plugins = {
   },
 }
 
-
-lvim.keys.normal_mode["<Leader>i"] = ":HopChar2<CR>"
+lvim.keys.normal_mode["f"] = ":HopChar1<CR>"
 lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').references()<CR>"
 
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
--- }
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "eslint", filetypes = { "typescript", "typescriptreact", "vue" }}
+}
+local formatters = require "lvim.lsp.null-ls.formatters"
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
     command = "prettier",
-    filetypes = { "typescript", "typescriptreact" },
+    filetypes = { "typescript", "typescriptreact", "vue" },
   },
 }
 
--- lvim.builtin.telescope.defaults.file_ignore_patterns = {
---   "node_modules/",
---   "node_modules/*",
--
+lvim.builtin.telescope.defaults.file_ignore_patterns = {
+  "node_modules/",
+  "node_modules/*",
+}
+
+require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = true
+  },
+  folding = {
+    enable = true
+  }
+}
+
+lvim.colorscheme = "tokyonight"
