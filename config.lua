@@ -1,3 +1,5 @@
+lvim.format_on_save = true
+
 lvim.plugins = {
   {
     "phaazon/hop.nvim",
@@ -19,9 +21,8 @@ lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').referen
 
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
-  { command = "eslint", filetypes = { "typescript", "typescriptreact", "vue" }}
+  { command = "eslint", filetypes = { "typescript", "typescriptreact", "vue" } }
 }
-local formatters = require "lvim.lsp.null-ls.formatters"
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -36,7 +37,7 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "node_modules/*",
 }
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   },
@@ -45,4 +46,4 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-lvim.colorscheme = "tokyonight"
+l
