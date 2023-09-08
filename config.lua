@@ -14,15 +14,16 @@ lvim.plugins = {
       require("colorizer").setup()
     end,
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }
 
 lvim.keys.normal_mode["f"] = ":HopChar1<CR>"
 lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').references()<CR>"
 
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { command = "eslint", filetypes = { "typescript", "typescriptreact", "vue" } }
-}
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "eslint", filetypes = { "typescript", "typescriptreact", "vue" } }
+-- }
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
