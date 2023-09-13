@@ -47,4 +47,4 @@ require 'nvim-treesitter.configs'.setup {
   }
 }
 
-l
+lvim.colorscheme = "catppuccin-macchiato"
