@@ -18,7 +18,7 @@ lvim.plugins = {
 }
 
 lvim.keys.normal_mode["f"] = ":HopChar1<CR>"
-lvim.keys.normal_mode["<Leader>F"] = ":Telescope grep_string<CR>"
+lvim.keys.normal_mode["<Leader>F"] = ":Telescope live_grep<CR>"
 lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').references()<CR>"
 
 -- local linters = require "lvim.lsp.null-ls.linters"
