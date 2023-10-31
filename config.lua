@@ -1,4 +1,5 @@
 lvim.format_on_save = true
+vim.cmd [[set noautochdir]]
 
 lvim.plugins = {
   {
@@ -19,6 +20,7 @@ lvim.plugins = {
 
 lvim.keys.normal_mode["f"] = ":HopChar1<CR>"
 lvim.keys.normal_mode["<Leader>F"] = ":Telescope live_grep<CR>"
+lvim.keys.normal_mode["<Leader>t"] = ":Telescope<CR>"
 lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').references()<CR>"
 
 -- local linters = require "lvim.lsp.null-ls.linters"
@@ -49,3 +51,4 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 lvim.colorscheme = "catppuccin-macchiato"
+
