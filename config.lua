@@ -22,6 +22,8 @@ lvim.keys.normal_mode["f"] = ":HopChar1<CR>"
 lvim.keys.normal_mode["<Leader>F"] = ":Telescope live_grep<CR>"
 lvim.keys.normal_mode["<Leader>t"] = ":Telescope<CR>"
 lvim.keys.normal_mode["<Leader>o"] = "<cmd>lua require('nice-reference').references()<CR>"
+lvim.keys.insert_mode["<C-k>"] = "<ESC>"
+lvim.keys.visual_mode["<C-k>"] = "<ESC>"
 
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
@@ -51,4 +53,3 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 lvim.colorscheme = "catppuccin-macchiato"
-
